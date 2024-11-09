@@ -12,10 +12,10 @@ const Cards = () => {
     },[])
 
     return (
-        <div className='mt-16' style={{fontFamily: "Markazi Text, serif"}}>
-            <h1 className='text-4xl text-center'>Books {books.length}</h1>
-           
-           <div>
+        <div className='mt-16 ml-24' style={{fontFamily: "Markazi Text, serif"}}>
+            <h1 className='text-4xl text-center mr-24'>Books</h1>
+
+           <div className='grid grid-cols-3 m-10'>
             {
                 books.map(book => <Card 
                 key={book.bookId}

@@ -25,8 +25,8 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow gap-2">
         <li><NavLink><a>Home</a></NavLink></li>
-        <li><NavLink><a>Page To Read</a></NavLink></li>
-        <li><NavLink><a>List Book</a></NavLink></li>     
+        <li><NavLink><a>Listed Book</a></NavLink></li>     
+        <li><NavLink><a>Pages To Read</a></NavLink></li>
       </ul>
     </div>
     <a className="btn btn-ghost text-black text-5xl font-bold" 
@@ -36,8 +36,8 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex" style={{fontFamily: "Markazi Text, serif"}}>
     <ul className="menu menu-horizontal gap-3 text-lg">
         <li><NavLink to='/' className={({isActive})=> `hover:bg-indigo-200 p-2 ${isActive ? "bg-indigo-500 text-white" : ""}`}><a>Home</a></NavLink></li>
-        <li><NavLink to='/pageToRead' className={({isActive})=> `hover:bg-indigo-200 p-2 ${isActive ? "bg-indigo-500 text-white" : ""}`}><a>Page To Read</a></NavLink></li>
-        <li><NavLink to='/listBook' className={({isActive})=> `hover:bg-indigo-200 p-2 ${isActive ? "bg-indigo-500 text-white" : ""}`}><a>List Book</a></NavLink></li>  
+        <li><NavLink to='/listBook' className={({isActive})=> `hover:bg-indigo-200 p-2 ${isActive ? "bg-indigo-500 text-white" : ""}`}><a>Listed Book</a></NavLink></li>  
+        <li><NavLink to='/pageToRead' className={({isActive})=> `hover:bg-indigo-200 p-2 ${isActive ? "bg-indigo-500 text-white" : ""}`}><a>Pages To Read</a></NavLink></li>
     </ul>
   </div>
   <div className="navbar-end gap-3">
