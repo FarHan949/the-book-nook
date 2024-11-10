@@ -1,12 +1,14 @@
 import React from 'react';
 import { CiStar } from "react-icons/ci"
+import { Link } from 'react-router-dom';
 
 const Card = ({book}) => {
 
-    const {image, rating, category, tags, publisher, author} = book
+    const {bookId, image, rating, category, tags, publisher, author} = book
 
     return (
         <div>
+          <Link to={`/Book/${bookId}`}>
                 <div className="card cursor-pointer bg-indigo-50 h-9/12 w-80 shadow-xl p-2 m-2">
              <figure>
                  <img src={image} width={"150px"} alt="books" />
@@ -27,6 +29,7 @@ const Card = ({book}) => {
           </div>
        </div>
        </div>
+          </Link>
         </div>
     );
 };

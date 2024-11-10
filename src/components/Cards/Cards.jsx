@@ -5,6 +5,8 @@ const Cards = () => {
 
     const [books , setBooks] = useState([])
 
+    const [dataLength, setDataLength] = useState(6)
+
     useEffect(()=>{
           fetch('book.json')
           .then(response => response.json())
@@ -17,12 +19,17 @@ const Cards = () => {
 
            <div className='grid grid-cols-3 m-10'>
             {
-                books.map(book => <Card 
+                books.slice(0 , dataLength).map(book => <Card 
                 key={book.bookId}
                 book={book}></Card>)
             }
            </div>
             
+            <div className={`text-center ${dataLength === books.length ? "hidden" : ""}`}>
+            <button onClick={()=> setDataLength(books.length)}
+            className='btn text-xl bg-indigo-500 text-white mb-10'>View All</button>
+            </div>
+
         </div>
     );
 };
