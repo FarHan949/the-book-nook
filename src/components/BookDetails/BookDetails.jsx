@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getStoredBook, removeBook, saveBook } from '../utility/LocalStorage';
+import { Helmet } from 'react-helmet-async';
 
 const BookDetails = () => {
 
@@ -19,6 +20,7 @@ const BookDetails = () => {
     publisher, 
     yearOfPublishing, 
     rating, 
+    bookName,
     category, 
     tags } = book
 
@@ -49,6 +51,9 @@ const BookDetails = () => {
 
     return (
         <div className='w-9/12 p-12 ml-32 flex' style={{fontFamily: "Markazi Text, serif"}}>
+          <Helmet>
+            <title>The Book Nook | {bookName}</title>
+          </Helmet>
             <img src={image} className='rounded-xl' width={"300px"} alt="" />
 
                 <div className='ml-10'>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getStoredBook } from "../utility/LocalStorage";
 import { useLoaderData } from "react-router-dom";
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from "recharts";
+import { Helmet } from "react-helmet-async";
 
 const PageToRead = () => {
 
@@ -30,6 +31,9 @@ const PageToRead = () => {
 
   return (
       <div className="text-center m-auto w-5/6">
+        <Helmet>
+          <title>The Book Nook | Page to Read</title>
+        </Helmet>
            <h1>Total books {bookPages.length}</h1>
       <BarChart width={900} height={300}
       data={data}

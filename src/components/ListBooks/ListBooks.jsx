@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getStoredBook } from "../utility/LocalStorage";
 import { useLoaderData } from "react-router-dom";
 import ListBook from "../ListBook/ListBook";
+import { Helmet } from "react-helmet-async";
 
 const ListBooks = () => {
   const books = useLoaderData();
@@ -36,6 +37,9 @@ const ListBooks = () => {
 
   return (
     <div style={{ fontFamily: "Markazi Text, serif" }}>
+      <Helmet>
+        <title>The Book Nook | your Listed books</title>
+      </Helmet>
       <div className="bg-gray-100 min-h-screen p-6">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white p-6 rounded-lg shadow-md">
