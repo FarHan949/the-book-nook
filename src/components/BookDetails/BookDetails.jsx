@@ -1,5 +1,8 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { getStoredBook, removeBook, saveBook } from '../utility/LocalStorage';
 
 const BookDetails = () => {
 
@@ -7,9 +10,8 @@ const BookDetails = () => {
    const {id} = useParams()
 
    const book = books.find( book => book.bookId === id) 
-
-
-   const { bookName, 
+   
+   const {
     author, 
     image, 
     review, 
@@ -19,6 +21,31 @@ const BookDetails = () => {
     rating, 
     category, 
     tags } = book
+
+
+
+    const handler = () => {
+      const storedBooks = getStoredBook();
+  
+      if (storedBooks.includes(id)) {
+          removeBook(id);
+          toast.success('Book Reading');
+      } else {
+          toast.error('Already Reading'); // Optional error toast for clarity
+      }
+  };
+  
+  const handler2 = () => {
+      const storedBooks = getStoredBook();
+  
+      if (!storedBooks.includes(id)) {
+          saveBook(id);
+          toast.success('Added to Read Later');
+      } else {
+          toast.error('Book is already in Read Later'); // Optional error toast for clarity
+      }
+  };
+
 
     return (
         <div className='w-9/12 p-12 ml-32 flex' style={{fontFamily: "Markazi Text, serif"}}>
@@ -65,13 +92,17 @@ const BookDetails = () => {
                    </table>
 
                    <div className='flex gap-3 mt-5'>
-                     <button className='bg-white font-bold text-indigo-700 border border-indigo-700  hover:bg-indigo-100 px-4 py-2 rounded-xl'>Read</button>
-                     <button className='bg-black text-white hover:bg-slate-500 px-4 py-2 rounded-xl'>WatchList</button>
+                     <button  
+                     onClick={handler}
+                      className='bg-white font-bold text-indigo-700 border border-indigo-700  hover:bg-indigo-100 px-4 py-2 rounded-xl'>Read</button>
+                     <button  
+                     onClick={handler2}
+                      className='bg-black text-white hover:bg-slate-500 px-4 py-2 rounded-xl'>WatchList</button>
                    </div>
                 </div>
 
-
                 </div>
+                  <ToastContainer />
         </div>
     );
 };
